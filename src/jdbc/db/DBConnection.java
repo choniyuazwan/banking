@@ -3,13 +3,13 @@ package jdbc.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DBConnecton {
-    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/banking";
-    private static final String USER = "root";
-    private static final String PASS = "aaaa";
+public class DBConnection {
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/banking";
+    static final String USER = "root";
+    static final String PASS = "aaaa";
 
-    private static Connection connection;
+    static Connection connection;
 
     public static Connection getConnection() {
         if (connection==null) {

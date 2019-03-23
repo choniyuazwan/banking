@@ -1,14 +1,23 @@
 package jdbc.model;
 
 public class Wallet {
-    private String id, description, createdDate;
+    private String description, createdDate;
+    int id, cif;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCif() {
+        return cif;
+    }
+
+    public void setCif(int cif) {
+        this.cif = cif;
     }
 
     public String getDescription() {

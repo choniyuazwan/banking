@@ -1,13 +1,14 @@
 package jdbc.model;
 
 public class Customer {
-    private String cif, firstName, lastName, birthDate;
+    private int cif;
+    String firstName, lastName, birthDate, username, password;
 
-    public String getCif() {
+    public int getCif() {
         return cif;
     }
 
-    public void setCif(String cif) {
+    public void setCif(int cif) {
         this.cif = cif;
     }
 
@@ -33,5 +34,21 @@ public class Customer {
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

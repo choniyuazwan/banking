@@ -1,15 +1,19 @@
 package jdbc.model;
 
 public class Account {
-    private String accountNumber, accountName, openDate, cif;
-    int balance;
+    private String accountName, openDate;
+    int accountNumber, balance, cif;
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    public void setCif(int cif) {
+        this.cif = cif;
     }
 
     public String getAccountName() {
@@ -36,11 +40,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getCif() {
+    public int getCif() {
         return cif;
-    }
-
-    public void setCif(String cif) {
-        this.cif = cif;
     }
 }

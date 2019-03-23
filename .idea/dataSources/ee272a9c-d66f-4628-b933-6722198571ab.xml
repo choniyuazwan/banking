@@ -1130,8 +1130,9 @@
     <table id="288" parent="2" name="walletaccount"/>
     <column id="289" parent="283" name="accountNumber">
       <Position>1</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="290" parent="283" name="accountName">
@@ -1141,7 +1142,8 @@
     </column>
     <column id="291" parent="283" name="openDate">
       <Position>3</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="292" parent="283" name="balance">
@@ -1151,7 +1153,7 @@
     </column>
     <column id="293" parent="283" name="cif">
       <Position>5</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="294" parent="283" name="PRIMARY">
@@ -1161,8 +1163,9 @@
     </key>
     <column id="295" parent="284" name="cif">
       <Position>1</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="296" parent="284" name="firstName">
@@ -1180,98 +1183,127 @@
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="299" parent="284" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>cif</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="300" parent="285" name="id">
-      <Position>1</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="301" parent="285" name="date">
-      <Position>2</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="302" parent="285" name="accountNumberDebit">
-      <Position>3</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="303" parent="285" name="accountNumberCredit">
-      <Position>4</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="304" parent="285" name="amount">
+    <column id="299" parent="284" name="username">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="285" name="transactionType">
+    <column id="300" parent="284" name="password">
       <Position>6</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="306" parent="285" name="PRIMARY">
+    <index id="301" parent="284" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="302" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>cif</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="307" parent="286" name="code">
+    <key id="303" parent="284" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="304" parent="285" name="id">
       <Position>1</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="308" parent="286" name="description">
+    <column id="305" parent="285" name="date">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="309" parent="286" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>code</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="310" parent="287" name="id">
-      <Position>1</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="311" parent="287" name="description">
-      <Position>2</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="312" parent="287" name="createdDate">
+    <column id="306" parent="285" name="accountNumberDebit">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="313" parent="287" name="PRIMARY">
+    <column id="307" parent="285" name="accountNumberCredit">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="285" name="amount">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="285" name="transactionType">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="310" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="314" parent="288" name="walletId">
+    <column id="311" parent="286" name="code">
       <Position>1</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="288" name="accountNumber">
+    <column id="312" parent="286" name="description">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="316" parent="288" name="PRIMARY">
+    <key id="313" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>walletId</ColNames>
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="314" parent="287" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="315" parent="287" name="description">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="316" parent="287" name="createdDate">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="317" parent="287" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="318" parent="288" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="319" parent="288" name="walletId">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="320" parent="288" name="accountNumber">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="321" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>
