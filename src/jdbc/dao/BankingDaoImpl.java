@@ -4,6 +4,8 @@ import jdbc.db.DBUtil;
 import jdbc.model.*;
 import jdbc.db.DBConnection;
 
+import java.util.List;
+
 public class BankingDaoImpl implements BankingDao {
     private DBUtil dbUtil;
 
@@ -47,8 +49,37 @@ public class BankingDaoImpl implements BankingDao {
     }
 
     @Override
+    public Account getLastAccount() {
+        return dbUtil.getLastAccount();
+    }
+
+    @Override
+    public Wallet getLastWallet() {
+        return dbUtil.getLastWallet();
+    }
+
+    @Override
     public Customer login(String username, String password) {
         return dbUtil.login(username, password);
     }
 
+    @Override
+    public Customer getOneCustomer(String username) {
+        return dbUtil.getOneCustomer(username);
+    }
+
+    @Override
+    public boolean addPrimaryAccount(int accountNumber, String username) {
+        return dbUtil.addPrimaryAccount(accountNumber, username);
+    }
+
+    @Override
+    public boolean addPrimaryWallet(int walletNumber, String username) {
+        return dbUtil.addPrimaryWallet(walletNumber, username);
+    }
+
+    @Override
+    public List<Account> getAllAccount(int cif) {
+        return dbUtil.getAllAccount(cif);
+    }
 }

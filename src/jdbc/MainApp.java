@@ -6,6 +6,7 @@ import jdbc.model.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
 
 public class MainApp {
     static InputStreamReader inputStreamReader = new InputStreamReader(System.in);
@@ -42,6 +43,11 @@ public class MainApp {
                 addCustomer();
                 int cif = bankingDao.getLastCustomer().getCif();
                 addAccount(cif);
+                int accountNumber = bankingDao.getLastAccount().getAccountNumber();
+                bankingDao.addPrimaryAccount(accountNumber, customer.getUsername());
+                addWallet(cif);
+                int walletId = bankingDao.getLastWallet().getId();
+                bankingDao.addPrimaryWallet(walletId, customer.getUsername());
                 menu2();
             } else if (choice.equals("2")) {
                 if(login()) {
@@ -101,10 +107,27 @@ public class MainApp {
         }
     }
 
-    static void account() {}
+    static boolean login() {
+        try {
+            System.out.println("Login");
+            System.out.print("Username: ");
+            customer.setUsername(input.readLine().trim());
+            System.out.print("Password: ");
+            customer.setPassword(input.readLine().trim());
+            customer = bankingDao.login(customer.getUsername(), customer.getPassword());
+            if(customer != null) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     static void transaction() {
         System.out.println("\n========= Transaction =========");
-        System.out.println("1. See Transaction");
+        System.out.println("1. See History");
         System.out.println("2. Top Up");
         System.out.println("3. Transfer");
         System.out.println("4. Withdraw");
@@ -137,6 +160,36 @@ public class MainApp {
             e.printStackTrace();
         }
     }
+    static void topUp() {
+        try {
+            System.out.println("Top Up");
+            System.out.println("Your Account Kredit");
+//            System.out.println("cif customer= "+customer.getCif());
+            List<Account> listAllAccount = bankingDao.getAllAccount(customer.getCif());
+            printAllAccount(listAllAccount);
+            System.out.println("Fill account number: ");
+            transaction.setAccountNumberCredit(Integer.parseInt(input.readLine()));
+            System.out.print("Amount: ");
+            transaction.setAmount(Integer.parseInt(input.readLine()));
+            transaction.setTransactionType(1);
+            if(bankingDao.addTransaction(transaction)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void transfer() {
+
+    }
+
+    static void withdraw() {}
+
+    static void account() {}
+
     static void wallet() {
         System.out.println("\n========= WALLET =========");
         System.out.println("1. See Account");
@@ -163,6 +216,7 @@ public class MainApp {
         }
     }
     static void walletAccount() {}
+
     static void transactionType() {}
 
     static void profile() {}
@@ -195,8 +249,9 @@ public class MainApp {
             System.out.println("Add Account");
             System.out.print("Account Name: ");
             account.setAccountName(input.readLine().trim());
+            System.out.print("Initial Deposit: ");
+            account.setBalance(Integer.parseInt(input.readLine()));
             account.setCif(cif);
-            account.setBalance(0);
             if(bankingDao.addAccount(account)) {
                 success();
             } else {
@@ -207,11 +262,12 @@ public class MainApp {
         }
     }
 
-    static void addWallet() {
+    static void addWallet(int cif) {
         try {
             System.out.println("Add Wallet");
             System.out.print("Description: ");
             wallet.setDescription(input.readLine().trim());
+            wallet.setCif(cif);
             if(bankingDao.addWallet(wallet)) {
                 success();
             } else {
@@ -255,72 +311,6 @@ public class MainApp {
         }
     }
 
-//    static void addTransaction() {
-//        try {
-//            System.out.println("Add Transaction");
-//            System.out.print("Account Number Debit: ");
-//            transaction.setAccountNumberDebit(Integer.parseInt(input.readLine()));
-//            System.out.print("Account Number Kredit: ");
-//            transaction.setAccountNumberCredit(Integer.parseInt(input.readLine()));
-//            System.out.print("Amount: ");
-//            transaction.setAmount(Integer.parseInt(input.readLine()));
-//            System.out.print("Transaction Type: ");
-//            transaction.setTransactionType(Integer.parseInt(input.readLine()));
-//
-//            if(bankingDao.addTransaction(transaction)) {
-//                success();
-//            } else {
-//                failed();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    static void topUp() {
-        try {
-            System.out.println("Top Up");
-            System.out.print("Account Number Kredit: ");
-            transaction.setAccountNumberCredit(Integer.parseInt(input.readLine()));
-            System.out.print("Amount: ");
-            transaction.setAmount(Integer.parseInt(input.readLine()));
-            transaction.setTransactionType(1);
-
-            if(bankingDao.addTransaction(transaction)) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void transfer() {
-
-    }
-
-    static void withdraw() {
-
-    }
-
-    static boolean login() {
-        try {
-            System.out.println("Login");
-            System.out.print("Username: ");
-            customer.setUsername(input.readLine().trim());
-            System.out.print("Password: ");
-            customer.setPassword(input.readLine().trim());
-            if(bankingDao.login(customer.getUsername(), customer.getPassword()) != null) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     static void success() {
         System.out.println("Proccess success");
     }
@@ -331,5 +321,11 @@ public class MainApp {
 
     static void notFound() {
         System.out.println("Data not found");
+    }
+
+    static void printAllAccount(List<Account> listAccount) {
+        for (Account account : listAccount) {
+            System.out.println(account.getAccountNumber() +  " | " + account.getAccountName() + " |");
+        }
     }
 }

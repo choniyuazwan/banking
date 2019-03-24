@@ -1,7 +1,7 @@
 package jdbc.model;
 
 public class Customer {
-    private int cif;
+    private int cif, primaryAccount, walletAccount;
     String firstName, lastName, birthDate, username, password;
 
     public int getCif() {
@@ -50,5 +50,21 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getPrimaryAccount() {
+        return primaryAccount;
+    }
+
+    public void setPrimaryAccount(int primaryAccount) {
+        this.primaryAccount = primaryAccount;
+    }
+
+    public int getWalletAccount() {
+        return walletAccount;
+    }
+
+    public void setWalletAccount(int walletAccount) {
+        this.walletAccount = walletAccount;
     }
 }
