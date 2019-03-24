@@ -17,6 +17,36 @@ public class DBUtil {
         connection = connect;
     }
 
+
+    //    customer
+    public boolean addPrimaryAccount(int accountNumber, String username) {
+        try {
+            String sql = "UPDATE customer set primaryAccount=? where username=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, accountNumber);
+            preparedStatement.setString(2, username);
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean addPrimaryWallet(int walletNumber, String username) {
+        try {
+            String sql = "UPDATE customer set primaryWallet=? where username=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, walletNumber);
+            preparedStatement.setString(2, username);
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean addCustomer(Customer customer) {
         try {
             String sql = "INSERT INTO customer (firstName, lastName, birthDate, username, password) VALUE(?,?,?,?,?)";
@@ -26,78 +56,6 @@ public class DBUtil {
             preparedStatement.setString(3, customer.getBirthDate());
             preparedStatement.setString(4, customer.getUsername());
             preparedStatement.setString(5, customer.getPassword());
-            preparedStatement.execute();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean addAccount(Account account) {
-        try {
-            String sql = "INSERT INTO account (accountName, cif, balance) VALUE(?,?,?)";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, account.getAccountName());
-            preparedStatement.setInt(2, account.getCif());
-            preparedStatement.setInt(3, account.getBalance());
-            preparedStatement.execute();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean addWallet(Wallet wallet) {
-        try {
-            String sql = "INSERT INTO wallet (description, cif) VALUE(?,?)";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, wallet.getDescription());
-            preparedStatement.setInt(2, wallet.getCif());
-            preparedStatement.execute();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean addTransactionType(TransactionType transactionType) {
-        try {
-            String sql = "INSERT INTO transactionType (description) VALUE(?)";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, transactionType.getDescription());
-            preparedStatement.execute();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean addWalletAccount(WalletAccount walletAccount) {
-        try {
-            String sql = "INSERT INTO walletAccount (walletId, accountNumber) VALUE(?,?)";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, walletAccount.getWalletId());
-            preparedStatement.setInt(2, walletAccount.getAccountNumber());
-            preparedStatement.execute();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean addTransaction(Transaction transaction) {
-        try {
-            String sql = "INSERT INTO transaction (accountNumberDebit, accountNumberCredit, amount, transactionType) VALUE(?,?,?,?)";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, transaction.getAccountNumberDebit());
-            preparedStatement.setInt(2, transaction.getAccountNumberCredit());
-            preparedStatement.setInt(3, transaction.getAmount());
-            preparedStatement.setInt(4, transaction.getTransactionType());
             preparedStatement.execute();
             return true;
         } catch (Exception e) {
@@ -116,40 +74,6 @@ public class DBUtil {
                 Customer customer = new Customer();
                 customer.setCif(resultSet.getInt("cif"));
                 result = customer;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public Account getLastAccount() {
-        Account result = new Account();
-        try {
-            String sql = "SELECT * FROM account ORDER BY accountNumber DESC LIMIT 1";
-            preparedStatement = connection.prepareStatement(sql);
-            resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Account account = new Account();
-                account.setAccountNumber(resultSet.getInt("accountNumber"));
-                result = account;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public Wallet getLastWallet() {
-        Wallet result = new Wallet();
-        try {
-            String sql = "SELECT * FROM wallet ORDER BY id DESC LIMIT 1";
-            preparedStatement = connection.prepareStatement(sql);
-            resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Wallet wallet = new Wallet();
-                wallet.setId(resultSet.getInt("id"));
-                result = wallet;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -204,12 +128,15 @@ public class DBUtil {
         return result;
     }
 
-    public boolean addPrimaryAccount(int accountNumber, String username) {
+
+    //  account
+    public boolean addAccount(Account account) {
         try {
-            String sql = "UPDATE customer set primaryAccount=? where username=?";
+            String sql = "INSERT INTO account (accountName, cif, balance) VALUE(?,?,?)";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, accountNumber);
-            preparedStatement.setString(2, username);
+            preparedStatement.setString(1, account.getAccountName());
+            preparedStatement.setInt(2, account.getCif());
+            preparedStatement.setInt(3, account.getBalance());
             preparedStatement.execute();
             return true;
         } catch (Exception e) {
@@ -218,18 +145,21 @@ public class DBUtil {
         return false;
     }
 
-    public boolean addPrimaryWallet(int walletNumber, String username) {
+    public Account getLastAccount() {
+        Account result = new Account();
         try {
-            String sql = "UPDATE customer set primaryWallet=? where username=?";
+            String sql = "SELECT * FROM account ORDER BY accountNumber DESC LIMIT 1";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, walletNumber);
-            preparedStatement.setString(2, username);
-            preparedStatement.execute();
-            return true;
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Account account = new Account();
+                account.setAccountNumber(resultSet.getInt("accountNumber"));
+                result = account;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return result;
     }
 
     public List<Account> getAllAccount(int cif) {
@@ -251,5 +181,180 @@ public class DBUtil {
             e.printStackTrace();
         }
         return listAccount;
+    }
+
+    public Account getOneAccount(int accountNumber) {
+        Account result = null;
+        try {
+            String sql = "SELECT * FROM account where accountNumber=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, accountNumber);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Account customer = new Account();
+                customer.setAccountNumber(resultSet.getInt("accountNumber"));
+                customer.setBalance(resultSet.getInt("balance"));
+                result = customer;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean removeAccount(int accountNumber) {
+        try {
+            String sql = "delete from account where accountNumber=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, accountNumber);
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    //    wallet
+    public boolean addWallet(Wallet wallet) {
+        try {
+            String sql = "INSERT INTO wallet (description, cif) VALUE(?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, wallet.getDescription());
+            preparedStatement.setInt(2, wallet.getCif());
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean removeWallet(int id) {
+        try {
+            String sql = "delete from wallet where id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public Wallet getLastWallet() {
+        Wallet result = new Wallet();
+        try {
+            String sql = "SELECT * FROM wallet ORDER BY id DESC LIMIT 1";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Wallet wallet = new Wallet();
+                wallet.setId(resultSet.getInt("id"));
+                result = wallet;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Wallet> getAllWallet(int cif) {
+        List<Wallet> listWallet = new ArrayList<Wallet>();
+        try {
+            String sql = "SELECT * FROM wallet where cif=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, cif);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Wallet wallet = new Wallet();
+                wallet.setId(resultSet.getInt("id"));
+                wallet.setDescription(resultSet.getString("description"));
+                wallet.setCreatedDate(resultSet.getString("createdDate"));
+                listWallet.add(wallet);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listWallet;
+    }
+
+
+
+    //    wallet account
+    public boolean addWalletAccount(WalletAccount walletAccount) {
+        try {
+            String sql = "INSERT INTO walletAccount (walletId, accountNumber) VALUE(?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, walletAccount.getWalletId());
+            preparedStatement.setInt(2, walletAccount.getAccountNumber());
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    //    transaction
+    public boolean addTransaction(Transaction transaction) {
+        try {
+            Account account = new Account();
+            if (transaction.getTransactionType() == 2 || transaction.getTransactionType() == 3) {
+                account = getOneAccount(transaction.getAccountNumberCredit());
+            } else if (transaction.getTransactionType() == 1) {
+                account = getOneAccount(transaction.getAccountNumberDebit());
+            }
+
+            if (account == null) {
+                return false;
+            }
+
+            int oldBalance = account.getBalance();
+            if (transaction.getTransactionType() == 2 || transaction.getTransactionType() == 3) {
+                int newBalance = oldBalance - transaction.getAmount();
+                account.setBalance(newBalance);
+            } else if (transaction.getTransactionType() == 1) {
+                int newBalance = oldBalance + transaction.getAmount();
+                account.setBalance(newBalance);
+            }
+
+            String sql = "UPDATE account set balance=? where accountNumber=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, account.getBalance());
+            preparedStatement.setInt(2, account.getAccountNumber());
+            preparedStatement.execute();
+
+            sql = "INSERT INTO transaction (accountNumberDebit, accountNumberCredit, amount, transactionType) VALUE(?,?,?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, transaction.getAccountNumberDebit());
+            preparedStatement.setInt(2, transaction.getAccountNumberCredit());
+            preparedStatement.setInt(3, transaction.getAmount());
+            preparedStatement.setInt(4, transaction.getTransactionType());
+            preparedStatement.execute();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    //    transaction type
+    public boolean addTransactionType(TransactionType transactionType) {
+        try {
+            String sql = "INSERT INTO transactionType (description) VALUE(?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, transactionType.getDescription());
+            preparedStatement.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

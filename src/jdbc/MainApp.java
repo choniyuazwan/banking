@@ -50,7 +50,7 @@ public class MainApp {
                 bankingDao.addPrimaryWallet(walletId, customer.getUsername());
                 menu2();
             } else if (choice.equals("2")) {
-                if(login()) {
+                if (login()) {
                     System.out.println("Login success");
                     menu2();
                 } else {
@@ -115,7 +115,7 @@ public class MainApp {
             System.out.print("Password: ");
             customer.setPassword(input.readLine().trim());
             customer = bankingDao.login(customer.getUsername(), customer.getPassword());
-            if(customer != null) {
+            if (customer != null) {
                 return true;
             }
             return false;
@@ -125,9 +125,210 @@ public class MainApp {
         return false;
     }
 
+    static void addCustomer() {
+        try {
+            System.out.println("Register Customer");
+            System.out.print("First Name: ");
+            customer.setFirstName(input.readLine().trim());
+            System.out.print("Last Name: ");
+            customer.setLastName(input.readLine().trim());
+            System.out.print("Birth Date: ");
+            customer.setBirthDate(input.readLine().trim());
+            System.out.print("Username: ");
+            customer.setUsername(input.readLine().trim());
+            System.out.print("Password: ");
+            customer.setPassword(input.readLine().trim());
+            if (bankingDao.addCustomer(customer)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void profile() {
+    }
+
+
+    static void account() {
+        System.out.println("\n========= Account =========");
+        System.out.println("1. Show");
+        System.out.println("2. Add");
+        System.out.println("3. Remove");
+        System.out.println("0. Main Menu");
+        System.out.println("");
+        System.out.print("Choose menu: ");
+
+        try {
+            String choice = input.readLine().trim();
+
+            if (choice.equals("0")) {
+                menu2();
+            } else if (choice.equals("1")) {
+                showAccount(bankingDao.getAllAccount(customer.getCif()));
+                account();
+            } else if (choice.equals("2")) {
+                addAccount(customer.getCif());
+                account();
+            } else if (choice.equals("3")) {
+                removeAccount();
+                account();
+            } else {
+                System.out.println("Wrong choice");
+                account();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void showAccount(List<Account> listAccount) {
+        for (Account account : listAccount) {
+            System.out.println(account.getAccountNumber() + " | " + account.getAccountName() + " |");
+        }
+    }
+
+    static void addAccount(int cif) {
+        try {
+            System.out.println("Add Account");
+            System.out.print("Account Name: ");
+            account.setAccountName(input.readLine().trim());
+            System.out.print("Initial Deposit: ");
+            account.setBalance(Integer.parseInt(input.readLine()));
+            account.setCif(cif);
+            if (bankingDao.addAccount(account)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void removeAccount() {
+        try {
+            System.out.println("Remove Account");
+            System.out.print("Account Number: ");
+            account.setAccountNumber(Integer.parseInt(input.readLine()));
+            if (bankingDao.removeAccount(account.getAccountNumber())) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void removeWallet() {
+        try {
+            System.out.println("Remove Wallet");
+            System.out.print("Wallet id: ");
+            wallet.setId(Integer.parseInt(input.readLine()));
+            if (bankingDao.removeWallet(wallet.getId())) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    static void wallet() {
+        System.out.println("\n========= WALLET =========");
+        System.out.println("1. Show");
+        System.out.println("2. Add");
+        System.out.println("3. Remove");
+        System.out.println("0. Main Menu");
+        System.out.println("");
+        System.out.print("Choose menu: ");
+
+        try {
+            String choice = input.readLine().trim();
+
+            if (choice.equals("0")) {
+                menu2();
+                System.exit(0);
+            } else if (choice.equals("1")) {
+                showWallet(bankingDao.getAllWallet(customer.getCif()));
+                wallet();
+            } else if (choice.equals("2")) {
+                addWallet(customer.getCif());
+                wallet();
+            } else if (choice.equals("3")) {
+                removeWallet();
+                wallet();
+            } else {
+                System.out.println("Wrong choice");
+                wallet();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void showWallet(List<Wallet> listWallet) {
+        for (Wallet wallet : listWallet) {
+            System.out.println(wallet.getId() + " | " + wallet.getDescription() + " | " + wallet.getCreatedDate() + " | ");
+        }
+    }
+
+    static void addWallet(int cif) {
+        try {
+            System.out.println("Add Wallet");
+            System.out.print("Description: ");
+            wallet.setDescription(input.readLine().trim());
+            wallet.setCif(cif);
+            if (bankingDao.addWallet(wallet)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    static void walletAccount() {
+
+
+    }
+    static void addWalletAccount() {
+        try {
+            System.out.println("Add Wallet Account");
+            System.out.print("Wallet Id: ");
+            walletAccount.setWalletId(Integer.parseInt(input.readLine()));
+            System.out.print("Account Number: ");
+            walletAccount.setAccountNumber(Integer.parseInt(input.readLine()));
+
+            if (bankingDao.addWalletAccount(walletAccount)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
     static void transaction() {
         System.out.println("\n========= Transaction =========");
-        System.out.println("1. See History");
+        System.out.println("1. Show History");
         System.out.println("2. Top Up");
         System.out.println("3. Transfer");
         System.out.println("4. Withdraw");
@@ -160,19 +361,61 @@ public class MainApp {
             e.printStackTrace();
         }
     }
-    static void topUp() {
+
+    static void transfer() {
         try {
-            System.out.println("Top Up");
+            System.out.println("Transfer");
             System.out.println("Your Account Kredit");
-//            System.out.println("cif customer= "+customer.getCif());
             List<Account> listAllAccount = bankingDao.getAllAccount(customer.getCif());
-            printAllAccount(listAllAccount);
-            System.out.println("Fill account number: ");
+            showAccount(listAllAccount);
+            System.out.print("Fill account number: ");
             transaction.setAccountNumberCredit(Integer.parseInt(input.readLine()));
             System.out.print("Amount: ");
             transaction.setAmount(Integer.parseInt(input.readLine()));
+            transaction.setTransactionType(2);
+            if (bankingDao.addTransaction(transaction)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void withdraw() {
+        try {
+            System.out.println("Withdraw");
+            System.out.println("Your Account Kredit");
+            List<Account> listAllAccount = bankingDao.getAllAccount(customer.getCif());
+            showAccount(listAllAccount);
+            System.out.print("Fill account number: ");
+            transaction.setAccountNumberCredit(Integer.parseInt(input.readLine()));
+            System.out.print("Amount: ");
+            transaction.setAmount(Integer.parseInt(input.readLine()));
+            transaction.setTransactionType(3);
+            if (bankingDao.addTransaction(transaction)) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void topUp() {
+        try {
+            System.out.println("Transfer");
+            System.out.println("Your Account Kredit");
+            List<Account> listAllAccount = bankingDao.getAllAccount(customer.getCif());
+            showAccount(listAllAccount);
+            System.out.print("Fill account number: ");
+            transaction.setAccountNumberDebit(Integer.parseInt(input.readLine()));
+            System.out.print("Amount: ");
+            transaction.setAmount(Integer.parseInt(input.readLine()));
             transaction.setTransactionType(1);
-            if(bankingDao.addTransaction(transaction)) {
+            if (bankingDao.addTransaction(transaction)) {
                 success();
             } else {
                 failed();
@@ -182,134 +425,23 @@ public class MainApp {
         }
     }
 
-    static void transfer() {
 
-    }
 
-    static void withdraw() {}
 
-    static void account() {}
-
-    static void wallet() {
-        System.out.println("\n========= WALLET =========");
-        System.out.println("1. See Account");
-        System.out.println("2. Add Account");
-        System.out.println("3. Delete Account");
-        System.out.println("0. Main Menu");
-        System.out.println("");
-        System.out.print("Choose menu: ");
-
-        try {
-            String choice = input.readLine().trim();
-
-            if (choice.equals("0")) {
-                menu2();
-                System.exit(0);
-            } else if (choice.equals("1")) {
-                wallet();
-            }  else {
-                System.out.println("Wrong choice");
-                wallet();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    static void walletAccount() {}
-
-    static void transactionType() {}
-
-    static void profile() {}
-
-    static void addCustomer() {
-        try {
-            System.out.println("Register Customer");
-            System.out.print("First Name: ");
-            customer.setFirstName(input.readLine().trim());
-            System.out.print("Last Name: ");
-            customer.setLastName(input.readLine().trim());
-            System.out.print("Birth Date: ");
-            customer.setBirthDate(input.readLine().trim());
-            System.out.print("Username: ");
-            customer.setUsername(input.readLine().trim());
-            System.out.print("Password: ");
-            customer.setPassword(input.readLine().trim());
-            if(bankingDao.addCustomer(customer)) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void addAccount(int cif) {
-        try {
-            System.out.println("Add Account");
-            System.out.print("Account Name: ");
-            account.setAccountName(input.readLine().trim());
-            System.out.print("Initial Deposit: ");
-            account.setBalance(Integer.parseInt(input.readLine()));
-            account.setCif(cif);
-            if(bankingDao.addAccount(account)) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void addWallet(int cif) {
-        try {
-            System.out.println("Add Wallet");
-            System.out.print("Description: ");
-            wallet.setDescription(input.readLine().trim());
-            wallet.setCif(cif);
-            if(bankingDao.addWallet(wallet)) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void addTransactionType() {
-        try {
-            System.out.println("Add Transaction Type");
-            System.out.print("Description: ");
-            transactionType.setDescription(input.readLine().trim());
-            if(bankingDao.addTransactionType(transactionType)) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void addWalletAccount() {
-        try {
-            System.out.println("Add Wallet Account");
-            System.out.print("Wallet Id: ");
-            walletAccount.setWalletId(Integer.parseInt(input.readLine()));
-            System.out.print("Account Number: ");
-            walletAccount.setAccountNumber(Integer.parseInt(input.readLine()));
-
-            if(bankingDao.addWalletAccount(walletAccount)) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    static void addTransactionType() {
+//        try {
+//            System.out.println("Add Transaction Type");
+//            System.out.print("Description: ");
+//            transactionType.setDescription(input.readLine().trim());
+//            if (bankingDao.addTransactionType(transactionType)) {
+//                success();
+//            } else {
+//                failed();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     static void success() {
         System.out.println("Proccess success");
@@ -323,9 +455,4 @@ public class MainApp {
         System.out.println("Data not found");
     }
 
-    static void printAllAccount(List<Account> listAccount) {
-        for (Account account : listAccount) {
-            System.out.println(account.getAccountNumber() +  " | " + account.getAccountName() + " |");
-        }
-    }
 }

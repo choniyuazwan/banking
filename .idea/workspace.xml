@@ -7,12 +7,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/banking/jdbc/dao/BankingDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/banking/jdbc/dao/BankingDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/banking/jdbc/dao/BankingDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/banking/jdbc/dao/BankingDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/banking/jdbc/db/DBUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/banking/jdbc/db/DBUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/banking/jdbc/model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/banking/jdbc/model/Customer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jdbc/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jdbc/dao/BankingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/dao/BankingDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jdbc/dao/BankingDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/dao/BankingDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jdbc/db/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/db/DBUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jdbc/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/model/Customer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/banking$Main.ic" NAME="Main Coverage Results" MODIFIED="1553415100723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/banking$Main.ic" NAME="Main Coverage Results" MODIFIED="1553428542469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
     <option name="myElementSize" value="209" />
@@ -59,12 +57,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/jdbc/MainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="174" column="33" lean-forward="true" selection-start-line="174" selection-start-column="33" selection-end-line="174" selection-end-column="33" />
+            <state relative-caret-position="532">
+              <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
               <folding>
+                <element signature="method#menu2#0;class#MainApp#0" />
+                <element signature="e#2749#3541#0" />
                 <element signature="e#2841#2939#1" />
                 <element signature="e#2969#3036#1" />
                 <element signature="e#3066#3132#1" />
@@ -73,96 +73,143 @@
                 <element signature="e#3366#3433#1" />
                 <element signature="e#3439#3531#1" />
                 <element signature="e#3562#3606#0" />
-                <element signature="method#transaction#0;class#MainApp#0" />
-                <element signature="method#transfer#0;class#MainApp#0" />
-                <element signature="method#wallet#0;class#MainApp#0" />
                 <element signature="method#addCustomer#0;class#MainApp#0" />
-                <element signature="method#addAccount#0;class#MainApp#0" />
-                <element signature="method#addWallet#0;class#MainApp#0" />
-                <element signature="method#addTransactionType#0;class#MainApp#0" />
-                <element signature="method#addWalletAccount#0;class#MainApp#0" />
+                <element signature="e#4245#4970#0" />
+                <element signature="e#4871#4913#1" />
+                <element signature="e#4919#4960#1" />
+                <element signature="e#4991#5035#0" />
+                <element signature="method#profile#0;class#MainApp#0" />
                 <element signature="method#printAllAccount#0;class#MainApp#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/jdbc/db/DBUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
-              <folding>
-                <element signature="method#addCustomer#0;class#DBUtil#0" />
-                <element signature="e#460#1064#0" />
-                <element signature="e#0#90#1" />
-                <element signature="e#1085#1129#0" />
-                <element signature="method#addAccount#0;class#DBUtil#0" />
-                <element signature="e#1220#1644#0" />
-                <element signature="e#0#60#1" />
-                <element signature="e#1665#1709#0" />
-                <element signature="method#addWallet#0;class#DBUtil#0" />
-                <element signature="e#1797#2144#0" />
-                <element signature="e#0#48#1" />
-                <element signature="e#2165#2209#0" />
-                <element signature="method#addTransactionType#0;class#DBUtil#0" />
-                <element signature="e#2324#2624#0" />
-                <element signature="e#0#50#1" />
-                <element signature="e#2645#2689#0" />
-                <element signature="method#addWalletAccount#0;class#DBUtil#0" />
-                <element signature="e#2798#3177#0" />
-                <element signature="e#0#62#1" />
-                <element signature="e#3198#3242#0" />
-                <element signature="method#getLastCustomer#0;class#DBUtil#0" />
-                <element signature="e#4109#4519#0" />
-                <element signature="e#0#40#0" />
-                <element signature="e#4349#4509#1" />
-                <element signature="e#4540#4584#0" />
-                <element signature="method#getLastAccount#0;class#DBUtil#0" />
-                <element signature="e#4705#5139#0" />
-                <element signature="e#0#49#0" />
-                <element signature="e#4954#5129#1" />
-                <element signature="e#5160#5204#0" />
-                <element signature="method#getLastWallet#0;class#DBUtil#0" />
-                <element signature="e#5321#5716#0" />
-                <element signature="e#0#37#0" />
-                <element signature="e#5558#5706#1" />
-                <element signature="e#5737#5781#0" />
-                <element signature="method#login#0;class#DBUtil#0" />
-                <element signature="e#5918#6728#0" />
-                <element signature="e#0#54#2" />
-                <element signature="e#6272#6718#1" />
-                <element signature="e#6749#6793#0" />
-                <element signature="method#getOneCustomer#0;class#DBUtil#0" />
-                <element signature="e#6922#7814#0" />
-                <element signature="e#0#39#2" />
-                <element signature="e#7207#7804#1" />
-                <element signature="e#7835#7879#0" />
-                <element signature="method#addPrimaryAccount#0;class#DBUtil#0" />
-                <element signature="e#7997#8332#0" />
-                <element signature="e#0#53#1" />
-                <element signature="e#8353#8397#0" />
-                <element signature="method#addPrimaryWallet#0;class#DBUtil#0" />
-                <element signature="e#8512#8845#0" />
-                <element signature="e#0#52#1" />
-                <element signature="e#8866#8910#0" />
-                <element signature="method#getAllAccount#0;class#DBUtil#0" />
-                <element signature="e#9064#9721#0" />
-                <element signature="e#0#33#2" />
-                <element signature="e#9387#9711#1" />
-                <element signature="e#9742#9786#0" />
+                <element signature="e#11920#12034#1" />
+                <element signature="method#removeAccount#0;class#MainApp#0" />
+                <element signature="e#6933#7390#0" />
+                <element signature="e#7291#7333#1" />
+                <element signature="e#7339#7380#1" />
+                <element signature="e#7411#7455#0" />
+                <element signature="method#showAccount#1;class#MainApp#0" />
+                <element signature="method#walletAccount#0;class#MainApp#0" />
+                <element signature="method#addWalletAccount#0;class#MainApp#0" />
+                <element signature="e#8209#8675#0" />
+                <element signature="e#8576#8618#1" />
+                <element signature="e#8624#8665#1" />
+                <element signature="e#8696#8740#0" />
+                <element signature="method#transaction#0;class#MainApp#0" />
+                <element signature="e#10099#10762#0" />
+                <element signature="e#10191#10263#1" />
+                <element signature="e#10293#10339#1" />
+                <element signature="e#10369#10440#1" />
+                <element signature="e#10470#10544#1" />
+                <element signature="e#10574#10648#1" />
+                <element signature="e#10654#10752#1" />
+                <element signature="e#10783#10827#0" />
+                <element signature="e#11464#11506#1" />
+                <element signature="e#11512#11553#1" />
+                <element signature="e#11584#11628#0" />
+                <element signature="e#12265#12307#1" />
+                <element signature="e#12313#12354#1" />
+                <element signature="e#12385#12429#0" />
+                <element signature="e#13062#13104#1" />
+                <element signature="e#13110#13151#1" />
+                <element signature="e#13182#13226#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jdbc/dao/BankingDao.java">
+        <entry file="file://$PROJECT_DIR$/src/jdbc/model/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state relative-caret-position="76">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#194#195#0" expanded="true" />
+                <element signature="e#249#250#0" expanded="true" />
+                <element signature="e#299#300#0" expanded="true" />
+                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#364#365#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <element signature="e#885#886#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jdbc/db/DBUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="359" column="1" selection-start-line="359" selection-start-column="1" selection-end-line="359" selection-end-column="1" />
+              <folding>
+                <element signature="method#addPrimaryAccount#0;class#DBUtil#0" />
+                <element signature="e#498#833#0" />
+                <element signature="e#0#53#1" />
+                <element signature="e#854#898#0" />
+                <element signature="method#addPrimaryWallet#0;class#DBUtil#0" />
+                <element signature="e#1013#1346#0" />
+                <element signature="e#0#52#1" />
+                <element signature="e#1367#1411#0" />
+                <element signature="method#addCustomer#0;class#DBUtil#0" />
+                <element signature="e#460#1064#0" />
+                <element signature="e#0#90#1" />
+                <element signature="e#1085#1129#0" />
+                <element signature="method#getLastCustomer#0;class#DBUtil#0" />
+                <element signature="e#1267#1677#0" />
+                <element signature="e#0#40#0" />
+                <element signature="e#1507#1667#1" />
+                <element signature="e#1698#1742#0" />
+                <element signature="method#login#0;class#DBUtil#0" />
+                <element signature="e#1879#2689#0" />
+                <element signature="e#0#54#2" />
+                <element signature="e#2233#2679#1" />
+                <element signature="e#2710#2754#0" />
+                <element signature="method#getOneCustomer#0;class#DBUtil#0" />
+                <element signature="e#2883#3775#0" />
+                <element signature="e#0#39#2" />
+                <element signature="e#3168#3765#1" />
+                <element signature="e#3796#3840#0" />
+                <element signature="method#addAccount#0;class#DBUtil#0" />
+                <element signature="e#1220#1644#0" />
+                <element signature="e#0#60#1" />
+                <element signature="e#1665#1709#0" />
+                <element signature="method#getLastAccount#0;class#DBUtil#0" />
+                <element signature="e#5588#6022#0" />
+                <element signature="e#0#49#0" />
+                <element signature="e#5837#6012#1" />
+                <element signature="e#6043#6087#0" />
+                <element signature="method#getAllAccount#0;class#DBUtil#0" />
+                <element signature="e#6245#6902#0" />
+                <element signature="e#0#33#2" />
+                <element signature="e#6568#6892#1" />
+                <element signature="e#6923#6967#0" />
+                <element signature="method#getOneAccount#0;class#DBUtil#0" />
+                <element signature="e#7100#7645#0" />
+                <element signature="e#0#43#2" />
+                <element signature="e#7391#7635#1" />
+                <element signature="e#7666#7710#0" />
+                <element signature="method#removeAccount#0;class#DBUtil#0" />
+                <element signature="e#7802#8226#0" />
+                <element signature="e#0#41#1" />
+                <element signature="e#8247#8291#0" />
+                <element signature="method#getLastWallet#0;class#DBUtil#0" />
+                <element signature="e#8344#8739#0" />
+                <element signature="e#0#37#0" />
+                <element signature="e#8581#8729#1" />
+                <element signature="e#8760#8804#0" />
+                <element signature="method#getAllAccount#1;class#DBUtil#0" />
+                <element signature="e#9396#10053#0" />
+                <element signature="e#0#32#2" />
+                <element signature="e#9719#10043#1" />
+                <element signature="e#10074#10118#0" />
+                <element signature="method#addWalletAccount#0;class#DBUtil#0" />
+                <element signature="e#6138#6517#0" />
+                <element signature="e#0#62#1" />
+                <element signature="e#6538#6582#0" />
+                <element signature="method#addTransactionType#0;class#DBUtil#0" />
+                <element signature="e#11511#11811#0" />
+                <element signature="e#0#50#1" />
+                <element signature="e#11832#11876#0" />
               </folding>
             </state>
           </provider>
@@ -171,12 +218,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/jdbc/dao/BankingDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+            <state relative-caret-position="211">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
-                <element signature="method#addTransactionType#0;class#BankingDaoImpl#0" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#618#619#0" expanded="true" />
+                <element signature="e#813#814#0" expanded="true" />
+                <element signature="e#841#842#0" expanded="true" />
+                <element signature="e#1534#1535#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
                 <element signature="method#addPrimaryAccount#0;class#BankingDaoImpl#0" />
                 <element signature="method#addPrimaryWallet#0;class#BankingDaoImpl#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jdbc/dao/BankingDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="143">
+              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -199,6 +263,9 @@
       <find>static void topup</find>
       <find>login()</find>
       <find>Transaction</find>
+      <find>getallac</find>
+      <find>removewallet</find>
+      <find>removeac</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,18 +288,19 @@
         <option value="$PROJECT_DIR$/src/jdbc/model/Transaction.java" />
         <option value="$PROJECT_DIR$/src/jdbc/model/Wallet.java" />
         <option value="$PROJECT_DIR$/src/jdbc/model/Customer.java" />
-        <option value="$PROJECT_DIR$/src/jdbc/dao/BankingDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/jdbc/MainApp.kt" />
         <option value="$PROJECT_DIR$/src/jdbc/dao/BankingDao.java" />
-        <option value="$PROJECT_DIR$/src/jdbc/MainApp.java" />
         <option value="$PROJECT_DIR$/src/jdbc/db/DBUtil.java" />
+        <option value="$PROJECT_DIR$/src/jdbc/dao/BankingDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/jdbc/MainApp.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="11" />
-    <option name="y" value="26" />
-    <option name="width" value="2023" />
-    <option name="height" value="1050" />
+    <option name="x" value="13" />
+    <option name="y" value="31" />
+    <option name="width" value="2427" />
+    <option name="height" value="1260" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -304,6 +372,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -356,18 +425,18 @@
       <workItem from="1553347175954" duration="6696000" />
       <workItem from="1553383649487" duration="13699000" />
       <workItem from="1553412967624" duration="3110000" />
-      <workItem from="1553416654295" duration="222000" />
+      <workItem from="1553416654295" duration="16633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64244000" />
+    <option name="totallyTimeSpent" value="80655000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49475524" visible="true" weight="0.16644295" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49475524" visible="true" weight="0.20080972" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -376,28 +445,28 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.28631285" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" />
-      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32867134" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32867134" />
+      <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3282123" />
+      <window_info anchor="bottom" id="Database Console" order="11" weight="0.32867134" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" x="778" y="72" width="719" height="716" id="Run" order="1" sideWeight="0.50524473" type="WINDOWED" weight="0.48255032" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.24939272" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Database" order="5" weight="0.2340081" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Maven" order="7" />
-      <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.3295302" />
+      <window_info anchor="right" x="621" y="113" width="891" height="679" id="Run" order="1" sideWeight="0.50524473" type="WINDOWED" weight="0.48255032" />
+      <window_info anchor="right" x="917" y="100" width="593" height="716" id="Debug" order="2" type="WINDOWED" weight="0.3979866" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.24939272" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Database" order="6" weight="0.2340081" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Maven" order="8" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Palette&#9;" order="10" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.3295302" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,25 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdbc/model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" selection-end-line="46" />
-          <folding>
-            <element signature="e#158#159#0" expanded="true" />
-            <element signature="e#194#195#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
-            <element signature="e#364#365#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-            <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#859#860#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdbc/model/TransactionType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -584,33 +634,142 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar!/com/mysql/cj/jdbc/ConnectionImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="1257" selection-start-line="1257" selection-end-line="1258" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdbc/dao/BankingDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="143">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc/db/DBUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="359" column="1" selection-start-line="359" selection-start-column="1" selection-end-line="359" selection-end-column="1" />
+          <folding>
+            <element signature="method#addPrimaryAccount#0;class#DBUtil#0" />
+            <element signature="e#498#833#0" />
+            <element signature="e#0#53#1" />
+            <element signature="e#854#898#0" />
+            <element signature="method#addPrimaryWallet#0;class#DBUtil#0" />
+            <element signature="e#1013#1346#0" />
+            <element signature="e#0#52#1" />
+            <element signature="e#1367#1411#0" />
+            <element signature="method#addCustomer#0;class#DBUtil#0" />
+            <element signature="e#460#1064#0" />
+            <element signature="e#0#90#1" />
+            <element signature="e#1085#1129#0" />
+            <element signature="method#getLastCustomer#0;class#DBUtil#0" />
+            <element signature="e#1267#1677#0" />
+            <element signature="e#0#40#0" />
+            <element signature="e#1507#1667#1" />
+            <element signature="e#1698#1742#0" />
+            <element signature="method#login#0;class#DBUtil#0" />
+            <element signature="e#1879#2689#0" />
+            <element signature="e#0#54#2" />
+            <element signature="e#2233#2679#1" />
+            <element signature="e#2710#2754#0" />
+            <element signature="method#getOneCustomer#0;class#DBUtil#0" />
+            <element signature="e#2883#3775#0" />
+            <element signature="e#0#39#2" />
+            <element signature="e#3168#3765#1" />
+            <element signature="e#3796#3840#0" />
+            <element signature="method#addAccount#0;class#DBUtil#0" />
+            <element signature="e#1220#1644#0" />
+            <element signature="e#0#60#1" />
+            <element signature="e#1665#1709#0" />
+            <element signature="method#getLastAccount#0;class#DBUtil#0" />
+            <element signature="e#5588#6022#0" />
+            <element signature="e#0#49#0" />
+            <element signature="e#5837#6012#1" />
+            <element signature="e#6043#6087#0" />
+            <element signature="method#getAllAccount#0;class#DBUtil#0" />
+            <element signature="e#6245#6902#0" />
+            <element signature="e#0#33#2" />
+            <element signature="e#6568#6892#1" />
+            <element signature="e#6923#6967#0" />
+            <element signature="method#getOneAccount#0;class#DBUtil#0" />
+            <element signature="e#7100#7645#0" />
+            <element signature="e#0#43#2" />
+            <element signature="e#7391#7635#1" />
+            <element signature="e#7666#7710#0" />
+            <element signature="method#removeAccount#0;class#DBUtil#0" />
+            <element signature="e#7802#8226#0" />
+            <element signature="e#0#41#1" />
+            <element signature="e#8247#8291#0" />
+            <element signature="method#getLastWallet#0;class#DBUtil#0" />
+            <element signature="e#8344#8739#0" />
+            <element signature="e#0#37#0" />
+            <element signature="e#8581#8729#1" />
+            <element signature="e#8760#8804#0" />
+            <element signature="method#getAllAccount#1;class#DBUtil#0" />
+            <element signature="e#9396#10053#0" />
+            <element signature="e#0#32#2" />
+            <element signature="e#9719#10043#1" />
+            <element signature="e#10074#10118#0" />
+            <element signature="method#addWalletAccount#0;class#DBUtil#0" />
+            <element signature="e#6138#6517#0" />
+            <element signature="e#0#62#1" />
+            <element signature="e#6538#6582#0" />
+            <element signature="method#addTransactionType#0;class#DBUtil#0" />
+            <element signature="e#11511#11811#0" />
+            <element signature="e#0#50#1" />
+            <element signature="e#11832#11876#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdbc/dao/BankingDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+        <state relative-caret-position="211">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
-            <element signature="method#addTransactionType#0;class#BankingDaoImpl#0" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#618#619#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#1534#1535#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
             <element signature="method#addPrimaryAccount#0;class#BankingDaoImpl#0" />
             <element signature="method#addPrimaryWallet#0;class#BankingDaoImpl#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc/model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdbc/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="174" column="33" lean-forward="true" selection-start-line="174" selection-start-column="33" selection-end-line="174" selection-end-column="33" />
+        <state relative-caret-position="532">
+          <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
           <folding>
+            <element signature="method#menu2#0;class#MainApp#0" />
+            <element signature="e#2749#3541#0" />
             <element signature="e#2841#2939#1" />
             <element signature="e#2969#3036#1" />
             <element signature="e#3066#3132#1" />
@@ -619,82 +778,44 @@
             <element signature="e#3366#3433#1" />
             <element signature="e#3439#3531#1" />
             <element signature="e#3562#3606#0" />
-            <element signature="method#transaction#0;class#MainApp#0" />
-            <element signature="method#transfer#0;class#MainApp#0" />
-            <element signature="method#wallet#0;class#MainApp#0" />
             <element signature="method#addCustomer#0;class#MainApp#0" />
-            <element signature="method#addAccount#0;class#MainApp#0" />
-            <element signature="method#addWallet#0;class#MainApp#0" />
-            <element signature="method#addTransactionType#0;class#MainApp#0" />
-            <element signature="method#addWalletAccount#0;class#MainApp#0" />
+            <element signature="e#4245#4970#0" />
+            <element signature="e#4871#4913#1" />
+            <element signature="e#4919#4960#1" />
+            <element signature="e#4991#5035#0" />
+            <element signature="method#profile#0;class#MainApp#0" />
             <element signature="method#printAllAccount#0;class#MainApp#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jdbc/db/DBUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="100" selection-end-column="40" />
-          <folding>
-            <element signature="method#addCustomer#0;class#DBUtil#0" />
-            <element signature="e#460#1064#0" />
-            <element signature="e#0#90#1" />
-            <element signature="e#1085#1129#0" />
-            <element signature="method#addAccount#0;class#DBUtil#0" />
-            <element signature="e#1220#1644#0" />
-            <element signature="e#0#60#1" />
-            <element signature="e#1665#1709#0" />
-            <element signature="method#addWallet#0;class#DBUtil#0" />
-            <element signature="e#1797#2144#0" />
-            <element signature="e#0#48#1" />
-            <element signature="e#2165#2209#0" />
-            <element signature="method#addTransactionType#0;class#DBUtil#0" />
-            <element signature="e#2324#2624#0" />
-            <element signature="e#0#50#1" />
-            <element signature="e#2645#2689#0" />
-            <element signature="method#addWalletAccount#0;class#DBUtil#0" />
-            <element signature="e#2798#3177#0" />
-            <element signature="e#0#62#1" />
-            <element signature="e#3198#3242#0" />
-            <element signature="method#getLastCustomer#0;class#DBUtil#0" />
-            <element signature="e#4109#4519#0" />
-            <element signature="e#0#40#0" />
-            <element signature="e#4349#4509#1" />
-            <element signature="e#4540#4584#0" />
-            <element signature="method#getLastAccount#0;class#DBUtil#0" />
-            <element signature="e#4705#5139#0" />
-            <element signature="e#0#49#0" />
-            <element signature="e#4954#5129#1" />
-            <element signature="e#5160#5204#0" />
-            <element signature="method#getLastWallet#0;class#DBUtil#0" />
-            <element signature="e#5321#5716#0" />
-            <element signature="e#0#37#0" />
-            <element signature="e#5558#5706#1" />
-            <element signature="e#5737#5781#0" />
-            <element signature="method#login#0;class#DBUtil#0" />
-            <element signature="e#5918#6728#0" />
-            <element signature="e#0#54#2" />
-            <element signature="e#6272#6718#1" />
-            <element signature="e#6749#6793#0" />
-            <element signature="method#getOneCustomer#0;class#DBUtil#0" />
-            <element signature="e#6922#7814#0" />
-            <element signature="e#0#39#2" />
-            <element signature="e#7207#7804#1" />
-            <element signature="e#7835#7879#0" />
-            <element signature="method#addPrimaryAccount#0;class#DBUtil#0" />
-            <element signature="e#7997#8332#0" />
-            <element signature="e#0#53#1" />
-            <element signature="e#8353#8397#0" />
-            <element signature="method#addPrimaryWallet#0;class#DBUtil#0" />
-            <element signature="e#8512#8845#0" />
-            <element signature="e#0#52#1" />
-            <element signature="e#8866#8910#0" />
-            <element signature="method#getAllAccount#0;class#DBUtil#0" />
-            <element signature="e#9064#9721#0" />
-            <element signature="e#0#33#2" />
-            <element signature="e#9387#9711#1" />
-            <element signature="e#9742#9786#0" />
+            <element signature="e#11920#12034#1" />
+            <element signature="method#removeAccount#0;class#MainApp#0" />
+            <element signature="e#6933#7390#0" />
+            <element signature="e#7291#7333#1" />
+            <element signature="e#7339#7380#1" />
+            <element signature="e#7411#7455#0" />
+            <element signature="method#showAccount#1;class#MainApp#0" />
+            <element signature="method#walletAccount#0;class#MainApp#0" />
+            <element signature="method#addWalletAccount#0;class#MainApp#0" />
+            <element signature="e#8209#8675#0" />
+            <element signature="e#8576#8618#1" />
+            <element signature="e#8624#8665#1" />
+            <element signature="e#8696#8740#0" />
+            <element signature="method#transaction#0;class#MainApp#0" />
+            <element signature="e#10099#10762#0" />
+            <element signature="e#10191#10263#1" />
+            <element signature="e#10293#10339#1" />
+            <element signature="e#10369#10440#1" />
+            <element signature="e#10470#10544#1" />
+            <element signature="e#10574#10648#1" />
+            <element signature="e#10654#10752#1" />
+            <element signature="e#10783#10827#0" />
+            <element signature="e#11464#11506#1" />
+            <element signature="e#11512#11553#1" />
+            <element signature="e#11584#11628#0" />
+            <element signature="e#12265#12307#1" />
+            <element signature="e#12313#12354#1" />
+            <element signature="e#12385#12429#0" />
+            <element signature="e#13062#13104#1" />
+            <element signature="e#13110#13151#1" />
+            <element signature="e#13182#13226#0" />
           </folding>
         </state>
       </provider>

@@ -5,18 +5,27 @@ import jdbc.model.*;
 import java.util.List;
 
 public interface BankingDao {
-    boolean addCustomer(Customer customer);
-    boolean addAccount(Account account);
-    boolean addWallet(Wallet wallet);
-    boolean addWalletAccount(WalletAccount walletAccount);
-    boolean addTransaction(Transaction transaction);
-    boolean addTransactionType(TransactionType transactionType);
-    Customer getLastCustomer();
-    Account getLastAccount();
-    Wallet getLastWallet();
-    Customer login(String username, String password);
-    Customer getOneCustomer(String username);
     boolean addPrimaryAccount(int accountNumber, String username);
     boolean addPrimaryWallet(int walletNumber, String username);
+
+    Customer login(String username, String password);
+    boolean addCustomer(Customer customer);
+    Customer getLastCustomer();
+    //    Customer getOneCustomer(String username);
+
     List<Account> getAllAccount(int cif);
+    boolean addAccount(Account account);
+    boolean removeAccount(int accountNumber);
+    Account getLastAccount();
+    //    Account getOneAccount(int accountNumber);
+
+    List<Wallet> getAllWallet(int cif);
+    boolean addWallet(Wallet wallet);
+    boolean removeWallet(int id);
+    Wallet getLastWallet();
+
+    boolean addWalletAccount(WalletAccount walletAccount);
+
+    boolean addTransaction(Transaction transaction);
+//    boolean addTransactionType(TransactionType transactionType);
 }

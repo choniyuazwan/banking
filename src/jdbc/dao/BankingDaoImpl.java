@@ -24,8 +24,18 @@ public class BankingDaoImpl implements BankingDao {
     }
 
     @Override
+    public boolean removeAccount(int accountNumber) {
+        return dbUtil.removeAccount(accountNumber);
+    }
+
+    @Override
     public boolean addWallet(Wallet wallet) {
         return dbUtil.addWallet(wallet);
+    }
+
+    @Override
+    public boolean removeWallet(int id) {
+        return dbUtil.removeWallet(id);
     }
 
     @Override
@@ -38,10 +48,10 @@ public class BankingDaoImpl implements BankingDao {
         return dbUtil.addTransaction(transaction);
     }
 
-    @Override
-    public boolean addTransactionType(TransactionType transactionType) {
-        return dbUtil.addTransactionType(transactionType);
-    }
+//    @Override
+//    public boolean addTransactionType(TransactionType transactionType) {
+//        return dbUtil.addTransactionType(transactionType);
+//    }
 
     @Override
     public Customer getLastCustomer() {
@@ -54,6 +64,11 @@ public class BankingDaoImpl implements BankingDao {
     }
 
     @Override
+    public List<Wallet> getAllWallet(int cif) {
+        return dbUtil.getAllWallet(cif);
+    }
+
+    @Override
     public Wallet getLastWallet() {
         return dbUtil.getLastWallet();
     }
@@ -63,10 +78,10 @@ public class BankingDaoImpl implements BankingDao {
         return dbUtil.login(username, password);
     }
 
-    @Override
-    public Customer getOneCustomer(String username) {
-        return dbUtil.getOneCustomer(username);
-    }
+//    @Override
+//    public Customer getOneCustomer(String username) {
+//        return dbUtil.getOneCustomer(username);
+//    }
 
     @Override
     public boolean addPrimaryAccount(int accountNumber, String username) {
@@ -82,4 +97,9 @@ public class BankingDaoImpl implements BankingDao {
     public List<Account> getAllAccount(int cif) {
         return dbUtil.getAllAccount(cif);
     }
+
+//    @Override
+//    public Account getOneAccount(int accountNumber) {
+//        return dbUtil.getOneAccount(accountNumber);
+//    }
 }

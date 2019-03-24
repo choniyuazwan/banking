@@ -29,7 +29,7 @@ CREATE TABLE `account` (
   `balance` int(11) DEFAULT NULL,
   `cif` int(11) DEFAULT NULL,
   PRIMARY KEY (`accountNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (12,'account a 1','2019-03-23 23:58:06',50000,9),(13,'account b','2019-03-24 00:22:24',50000,10),(14,'account c','2019-03-24 00:32:52',50000,11),(15,'d','2019-03-24 00:44:01',5,12),(16,'e','2019-03-24 05:43:39',5,13),(17,'6','2019-03-24 05:47:41',6,14),(18,'h','2019-03-24 05:51:33',5,18),(19,'q','2019-03-24 06:08:44',2,19),(20,'i','2019-03-24 06:46:31',8,20),(21,'j','2019-03-24 06:51:31',7,21),(22,'k','2019-03-24 06:54:21',8,22),(23,'m','2019-03-24 07:02:45',7,24);
+INSERT INTO `account` VALUES (23,'m','2019-03-24 07:02:45',11,24),(25,'a','2019-03-24 13:39:52',50000,25),(27,'akun m 2','2019-03-24 13:51:05',2,24);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `customer` (
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `primaryAccount_UNIQUE` (`primaryAccount`),
   UNIQUE KEY `primaryWallet_UNIQUE` (`primaryWallet`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (9,'first a','last a','birth a','a','a',NULL,NULL),(10,'first b','last b','birth b','b','b',2,0),(11,'first c','last c','birth c','c','c',NULL,NULL),(12,'d','d','d','d','d',NULL,NULL),(13,'e','e','e','e','e',NULL,NULL),(14,'6','6','6','6','6',NULL,NULL),(17,'g','g','g','g','g',16,NULL),(18,'h','h','h','h','h',NULL,NULL),(19,'q','q','q','q','q',0,NULL),(20,'i','i','i','i','i',NULL,NULL),(21,'j','j','j','j','j',NULL,NULL),(22,'k','k','k','k','k',22,NULL),(23,'l','l','l','l','l',NULL,11),(24,'m','m','m','m','m',23,12);
+INSERT INTO `customer` VALUES (24,'m','m','m','m','m',23,12),(25,'a','a','a','a','a',25,16);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `transaction` (
   `amount` int(11) DEFAULT NULL,
   `transactionType` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,6 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (4,'2019-03-24 07:27:03',0,23,10000,1);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,9 +138,8 @@ CREATE TABLE `wallet` (
   `description` varchar(45) DEFAULT NULL,
   `createdDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `cif` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `cif_UNIQUE` (`cif`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +148,7 @@ CREATE TABLE `wallet` (
 
 LOCK TABLES `wallet` WRITE;
 /*!40000 ALTER TABLE `wallet` DISABLE KEYS */;
-INSERT INTO `wallet` VALUES (5,'wallet b','2019-03-24 00:22:28',NULL),(6,'d','2019-03-24 00:44:04',NULL),(7,'e','2019-03-24 05:43:43',NULL),(8,'h','2019-03-24 05:51:36',18),(9,'q','2019-03-24 06:08:47',19),(10,'i','2019-03-24 06:46:34',20),(11,'l','2019-03-24 07:01:38',23),(12,'m','2019-03-24 07:02:47',24);
+INSERT INTO `wallet` VALUES (12,'m','2019-03-24 07:02:47',24),(16,'a','2019-03-24 13:40:05',25),(17,'wallet m 4','2019-03-24 13:51:51',24);
 /*!40000 ALTER TABLE `wallet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-24 14:34:17
+-- Dump completed on 2019-03-24 21:02:47
