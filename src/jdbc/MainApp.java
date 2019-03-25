@@ -5,6 +5,7 @@ import jdbc.dao.BankingDaoImpl;
 import jdbc.model.*;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class MainApp {
                 addWallet(cif);
                 int walletId = bankingDao.getLastWallet().getId();
                 bankingDao.addPrimaryWallet(walletId, customer.getUsername());
+                customer = bankingDao.login(customer.getUsername(), customer.getPassword());
                 menu2();
             } else if (choice.equals("2")) {
                 if (login()) {
@@ -185,9 +187,17 @@ public class MainApp {
     }
 
     static void showAccount(List<Account> listAccount) {
+        boolean primary=true;
         for (Account account : listAccount) {
-            System.out.println(account.getAccountNumber() + " | " + account.getAccountName() + " |");
+            System.out.print(account.getAccountNumber() + " | " + account.getAccountName() + " |");
+            if(primary) {
+                System.out.print(" primary");
+                primary=false;
+            }
+            System.out.println();
         }
+
+//        String sql = "insert into siswa (nim, nama, prodi) values ('"+nim+"', '"+nama+"', '')";
     }
 
     static void addAccount(int cif) {
@@ -214,21 +224,6 @@ public class MainApp {
             System.out.print("Account Number: ");
             account.setAccountNumber(Integer.parseInt(input.readLine()));
             if (bankingDao.removeAccount(account.getAccountNumber())) {
-                success();
-            } else {
-                failed();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void removeWallet() {
-        try {
-            System.out.println("Remove Wallet");
-            System.out.print("Wallet id: ");
-            wallet.setId(Integer.parseInt(input.readLine()));
-            if (bankingDao.removeWallet(wallet.getId())) {
                 success();
             } else {
                 failed();
@@ -274,8 +269,14 @@ public class MainApp {
     }
 
     static void showWallet(List<Wallet> listWallet) {
+        boolean primary = true;
         for (Wallet wallet : listWallet) {
             System.out.println(wallet.getId() + " | " + wallet.getDescription() + " | " + wallet.getCreatedDate() + " | ");
+            if(primary) {
+                System.out.print(" primary");
+                primary=false;
+            }
+            System.out.println();
         }
     }
 
@@ -295,16 +296,74 @@ public class MainApp {
         }
     }
 
+    static void removeWallet() {
+        try {
+            System.out.println("Remove Wallet");
+            System.out.print("Wallet id: ");
+            wallet.setId(Integer.parseInt(input.readLine()));
+            if (bankingDao.removeWallet(wallet.getId())) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 
     static void walletAccount() {
+        System.out.println("\n========= WALLET ACCOUNT =========");
+        System.out.println("1. Show");
+        System.out.println("2. Register Account");
+        System.out.println("3. Unregister Account");
+        System.out.println("0. Main Menu");
+        System.out.println("");
+        System.out.print("Choose menu: ");
 
+        try {
+            String choice = input.readLine().trim();
 
+            if (choice.equals("0")) {
+                menu2();
+                System.exit(0);
+            } else if (choice.equals("1")) {
+                System.out.println("");
+                showWalletAccount();
+                walletAccount();
+            } else if (choice.equals("2")) {
+                addWalletAccount();
+                walletAccount();
+            } else if (choice.equals("3")) {
+                removeWalletAccount();
+                walletAccount();
+            } else {
+                System.out.println("Wrong choice");
+                walletAccount();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    static void showWalletAccount() {
+        try {
+            System.out.print("Input your wallet id: ");
+            walletAccount.setWalletId(Integer.parseInt(input.readLine()));
+            List<WalletAccount> listWalletAccount = bankingDao.getAllWalletAccount(walletAccount.getWalletId());
+            for (WalletAccount walletAccount : listWalletAccount) {
+                System.out.println(walletAccount.getId()+ " | " + walletAccount.getWalletId() + " | " + walletAccount.getAccountNumber() + " | ");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     static void addWalletAccount() {
         try {
-            System.out.println("Add Wallet Account");
+            System.out.println("Register Account");
             System.out.print("Wallet Id: ");
             walletAccount.setWalletId(Integer.parseInt(input.readLine()));
             System.out.print("Account Number: ");
@@ -320,8 +379,20 @@ public class MainApp {
         }
     }
 
-
-
+    static void removeWalletAccount() {
+        try {
+            System.out.println("Unregister Account");
+            System.out.print("Account number: ");
+            walletAccount.setAccountNumber(Integer.parseInt(input.readLine()));
+            if (bankingDao.removeWalletAccount(walletAccount.getAccountNumber())) {
+                success();
+            } else {
+                failed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

@@ -44,6 +44,11 @@ public class BankingDaoImpl implements BankingDao {
     }
 
     @Override
+    public boolean removeWalletAccount(int accountNumber) {
+        return dbUtil.removeWalletAccount(accountNumber);
+    }
+
+    @Override
     public boolean addTransaction(Transaction transaction) {
         return dbUtil.addTransaction(transaction);
     }
@@ -71,6 +76,11 @@ public class BankingDaoImpl implements BankingDao {
     @Override
     public Wallet getLastWallet() {
         return dbUtil.getLastWallet();
+    }
+
+    @Override
+    public List<WalletAccount> getAllWalletAccount(int walletId) {
+        return dbUtil.getAllWalletAccount(walletId);
     }
 
     @Override
