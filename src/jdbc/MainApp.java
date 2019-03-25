@@ -113,10 +113,12 @@ public class MainApp {
         try {
             System.out.println("Login");
             System.out.print("Username: ");
-            customer.setUsername(input.readLine().trim());
+            String username = input.readLine().trim();
+//            customer.setUsername(input.readLine().trim());
             System.out.print("Password: ");
-            customer.setPassword(input.readLine().trim());
-            customer = bankingDao.login(customer.getUsername(), customer.getPassword());
+            String password = input.readLine().trim();
+//            customer.setPassword(input.readLine().trim());
+            customer = bankingDao.login(username, password);
             if (customer != null) {
                 return true;
             }
@@ -271,7 +273,7 @@ public class MainApp {
     static void showWallet(List<Wallet> listWallet) {
         boolean primary = true;
         for (Wallet wallet : listWallet) {
-            System.out.println(wallet.getId() + " | " + wallet.getDescription() + " | " + wallet.getCreatedDate() + " | ");
+            System.out.print(wallet.getId() + " | " + wallet.getDescription() + " | " + wallet.getCreatedDate() + " | ");
             if(primary) {
                 System.out.print(" primary");
                 primary=false;
@@ -350,9 +352,9 @@ public class MainApp {
 
     static void showWalletAccount() {
         try {
-            System.out.print("Input your wallet id: ");
-            walletAccount.setWalletId(Integer.parseInt(input.readLine()));
-            List<WalletAccount> listWalletAccount = bankingDao.getAllWalletAccount(walletAccount.getWalletId());
+//            System.out.print("Input your wallet id: ");
+//            walletAccount.setWalletId(Integer.parseInt(input.readLine()));
+            List<WalletAccount> listWalletAccount = bankingDao.getAllWalletAccountCif(customer.getCif());
             for (WalletAccount walletAccount : listWalletAccount) {
                 System.out.println(walletAccount.getId()+ " | " + walletAccount.getWalletId() + " | " + walletAccount.getAccountNumber() + " | ");
             }
@@ -364,8 +366,12 @@ public class MainApp {
     static void addWalletAccount() {
         try {
             System.out.println("Register Account");
+            System.out.println("Your Wallet");
+            showWallet(bankingDao.getAllWallet(customer.getCif()));
             System.out.print("Wallet Id: ");
             walletAccount.setWalletId(Integer.parseInt(input.readLine()));
+            System.out.println("Your Account");
+            showAccount(bankingDao.getAllAccount(customer.getCif()));
             System.out.print("Account Number: ");
             walletAccount.setAccountNumber(Integer.parseInt(input.readLine()));
 
@@ -414,6 +420,7 @@ public class MainApp {
                 menu2();
                 System.exit(0);
             } else if (choice.equals("1")) {
+                showTransaction();
                 transaction();
             } else if (choice.equals("2")) {
                 topUp();
@@ -427,6 +434,17 @@ public class MainApp {
             } else {
                 System.out.println("Wrong choice");
                 transaction();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void showTransaction() {
+        try {
+            List<Transaction> listTransaction = bankingDao.getAllTransaction(customer.getCif());
+            for (Transaction transaction : listTransaction) {
+                System.out.println(transaction.getId()+ " | " + transaction.getAccountNumberDebit()+ " | " + transaction.getAccountNumberCredit() + " | " + transaction.getAmount() + " | " + transaction.getTransactionType() + " | " + transaction.getDate() + " | ");
             }
         } catch (Exception e) {
             e.printStackTrace();

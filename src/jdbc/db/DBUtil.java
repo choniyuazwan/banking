@@ -96,6 +96,9 @@ public class DBUtil {
                 customer.setLastName(resultSet.getString("lastName"));
                 customer.setUsername(resultSet.getString("username"));
                 customer.setPassword(resultSet.getString("password"));
+                customer.setPrimaryAccount(resultSet.getInt("primaryAccount"));
+                customer.setPrimaryAccount(resultSet.getInt("primaryWallet"));
+                customer.setBirthDate(resultSet.getString("birthDate"));
                 result = customer;
             }
         } catch (Exception e) {
@@ -283,6 +286,31 @@ public class DBUtil {
 
 
     //    wallet account
+    public List<WalletAccount> getAllWalletAccountCif(int cif) {
+        List<Wallet> listWallet = new ArrayList<Wallet>();
+        listWallet = getAllWallet(cif);
+
+        List<WalletAccount> listWalletAccount = new ArrayList<WalletAccount>();
+        for (Wallet wallet : listWallet) {
+            try {
+                String sql = "SELECT * FROM walletaccount where walletId=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, wallet.getId());
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    WalletAccount walletAccount = new WalletAccount();
+                    walletAccount.setId(resultSet.getInt("id"));
+                    walletAccount.setWalletId(resultSet.getInt("walletId"));
+                    walletAccount.setAccountNumber(resultSet.getInt("accountNumber"));
+                    listWalletAccount.add(walletAccount);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return listWalletAccount;
+    }
+
     public List<WalletAccount> getAllWalletAccount(int walletId) {
         List<WalletAccount> listWalletAccount = new ArrayList<WalletAccount>();
         try {
@@ -332,6 +360,34 @@ public class DBUtil {
 
 
     //    transaction
+    public List<Transaction> getAllTransaction(int cif) {
+        List<Account> listAccount = new ArrayList<Account>();
+        listAccount = getAllAccount(cif);
+
+        List<Transaction> listTransaction = new ArrayList<Transaction>();
+        for (Account account : listAccount) {
+            try {
+                String sql = "SELECT * FROM transaction where accountNumberDebit=? or accountNumberCredit=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, account.getAccountNumber());
+                preparedStatement.setInt(2, account.getAccountNumber());
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    Transaction transaction = new Transaction();
+                    transaction.setId(resultSet.getInt("id"));
+                    transaction.setAccountNumberDebit(resultSet.getInt("accountNumberDebit"));
+                    transaction.setAccountNumberCredit(resultSet.getInt("accountNumberCredit"));
+                    transaction.setAmount(resultSet.getInt("amount"));
+                    transaction.setTransactionType(resultSet.getInt("transactionType"));
+                    transaction.setDate(resultSet.getString("date"));
+                    listTransaction.add(transaction);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return listTransaction;
+    }
     public boolean addTransaction(Transaction transaction) {
         try {
             Account account = new Account();

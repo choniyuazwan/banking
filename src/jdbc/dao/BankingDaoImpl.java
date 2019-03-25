@@ -49,6 +49,11 @@ public class BankingDaoImpl implements BankingDao {
     }
 
     @Override
+    public List<Transaction> getAllTransaction(int cif) {
+        return dbUtil.getAllTransaction(cif);
+    }
+
+    @Override
     public boolean addTransaction(Transaction transaction) {
         return dbUtil.addTransaction(transaction);
     }
@@ -81,6 +86,11 @@ public class BankingDaoImpl implements BankingDao {
     @Override
     public List<WalletAccount> getAllWalletAccount(int walletId) {
         return dbUtil.getAllWalletAccount(walletId);
+    }
+
+    @Override
+    public List<WalletAccount> getAllWalletAccountCif(int cif) {
+        return dbUtil.getAllWalletAccountCif(cif);
     }
 
     @Override

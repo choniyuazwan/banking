@@ -25,10 +25,14 @@ public interface BankingDao {
     Wallet getLastWallet();
 
     List<WalletAccount> getAllWalletAccount(int walletId);
+    List<WalletAccount> getAllWalletAccountCif(int cif);
     boolean addWalletAccount(WalletAccount walletAccount);
     boolean removeWalletAccount(int accountNumber);
 
 
+    List<Transaction> getAllTransaction(int cif);
     boolean addTransaction(Transaction transaction);
+
+
 //    boolean addTransactionType(TransactionType transactionType);
 }
