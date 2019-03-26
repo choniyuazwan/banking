@@ -177,6 +177,7 @@ public class DBUtil {
                 account.setAccountNumber(resultSet.getInt("accountNumber"));
                 account.setAccountName(resultSet.getString("accountName"));
                 account.setBalance(resultSet.getInt("balance"));
+                account.setOpenDate(resultSet.getString("openDate"));
                 listAccount.add(account);
             }
         } catch (Exception e) {

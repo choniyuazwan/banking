@@ -23,6 +23,11 @@ public class MainApp {
     static Transaction transaction = new Transaction();
 
     public static void main(String[] args) {
+//        customer = bankingDao.login("m", "m");
+//        showAccount(bankingDao.getAllAccount(customer.getCif()));
+//        showWallet(bankingDao.getAllWallet(customer.getCif()));
+//        showWalletAccount();
+//        showTransaction();
         menu1();
     }
 
@@ -189,17 +194,27 @@ public class MainApp {
     }
 
     static void showAccount(List<Account> listAccount) {
-        boolean primary=true;
+        System.out.println("|" + pad("No", 3) + "|"
+                + pad("Account Number", 15) + "|"
+                + pad("Account Name", 15) + "|"
+                + pad("Balance", 10) + "|"
+                + pad("Open Date", 20) + "|"
+                + pad("Type", 10) + "|");
+        int i=1;
         for (Account account : listAccount) {
-            System.out.print(account.getAccountNumber() + " | " + account.getAccountName() + " |");
-            if(primary) {
-                System.out.print(" primary");
-                primary=false;
+            System.out.print("|" + pad("" + i, 3) + "|"
+                    + pad(""+account.getAccountNumber(), 15) + "|"
+                    + pad(""+account.getAccountName(), 15) + "|"
+                    + pad(""+account.getBalance(), 10) + "|"
+                    + pad(""+account.getOpenDate(), 20) + "|");
+            if(i==1) {
+                System.out.print(pad("primary", 10) + "|");
+            } else {
+                System.out.print(pad("virtual", 10) + "|");
             }
             System.out.println();
+            i+=1;
         }
-
-//        String sql = "insert into siswa (nim, nama, prodi) values ('"+nim+"', '"+nama+"', '')";
     }
 
     static void addAccount(int cif) {
@@ -271,14 +286,24 @@ public class MainApp {
     }
 
     static void showWallet(List<Wallet> listWallet) {
-        boolean primary = true;
-        for (Wallet wallet : listWallet) {
-            System.out.print(wallet.getId() + " | " + wallet.getDescription() + " | " + wallet.getCreatedDate() + " | ");
-            if(primary) {
-                System.out.print(" primary");
-                primary=false;
+        System.out.println("|" + pad("No", 3) + "|"
+                + pad("Id", 3) + "|"
+                + pad("Description", 15) + "|"
+                + pad("Created Date", 20) + "|"
+                + pad("Type", 10) + "|");
+        int i=1;
+        for (Wallet wallet: listWallet) {
+            System.out.print("|" + pad("" + i, 3) + "|"
+                    + pad(""+wallet.getId(), 3) + "|"
+                    + pad(""+wallet.getDescription(), 15) + "|"
+                    + pad(""+wallet.getCreatedDate(), 20) + "|");
+            if(i==1) {
+                System.out.print(pad("primary", 10) + "|");
+            } else {
+                System.out.print(pad("virtual", 10) + "|");
             }
             System.out.println();
+            i+=1;
         }
     }
 
@@ -352,11 +377,18 @@ public class MainApp {
 
     static void showWalletAccount() {
         try {
-//            System.out.print("Input your wallet id: ");
-//            walletAccount.setWalletId(Integer.parseInt(input.readLine()));
             List<WalletAccount> listWalletAccount = bankingDao.getAllWalletAccountCif(customer.getCif());
+            System.out.println("|" + pad("No", 3) + "|"
+                    + pad("Id", 3) + "|"
+                    + pad("Wallet Id", 10) + "|"
+                    + pad("Account Number", 15) + "|");
+            int i=1;
             for (WalletAccount walletAccount : listWalletAccount) {
-                System.out.println(walletAccount.getId()+ " | " + walletAccount.getWalletId() + " | " + walletAccount.getAccountNumber() + " | ");
+                System.out.println("|" + pad("" + i, 3) + "|"
+                        + pad(""+walletAccount.getId(), 3) + "|"
+                        + pad(""+walletAccount.getWalletId(), 10) + "|"
+                        + pad(""+walletAccount.getAccountNumber(), 15) + "|");
+                i+=1;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -445,6 +477,24 @@ public class MainApp {
             List<Transaction> listTransaction = bankingDao.getAllTransaction(customer.getCif());
             for (Transaction transaction : listTransaction) {
                 System.out.println(transaction.getId()+ " | " + transaction.getAccountNumberDebit()+ " | " + transaction.getAccountNumberCredit() + " | " + transaction.getAmount() + " | " + transaction.getTransactionType() + " | " + transaction.getDate() + " | ");
+            }
+
+            System.out.println("|" + pad("No", 3) + "|"
+                    + pad("Id", 3) + "|"
+                    + pad("Number Debit", 15) + "|"
+                    + pad("Number Credit", 15) + "|"
+                    + pad("Amount", 10) + "|"
+                    + pad("Type", 5) + "|"
+                    + pad("Date", 20) + "|");
+            int i=1;
+            for (Transaction transaction : listTransaction) {
+                System.out.println("|" + pad("" + i, 3) + "|"
+                        + pad(""+transaction.getId(), 3) + "|"
+                        + pad(""+transaction.getAccountNumberDebit(), 15) + "|"
+                        + pad(""+transaction.getAccountNumberCredit(), 15) + "|"
+                        + pad(""+transaction.getAmount(), 10) + "|"
+                        + pad(""+transaction.getTransactionType(), 5) + "|"
+                        + pad(""+transaction.getDate(), 20) + "|");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -542,6 +592,10 @@ public class MainApp {
 
     static void notFound() {
         System.out.println("Data not found");
+    }
+
+    static String pad(String string, int length) {
+        return String.format("%1$-" + length + "s", string);
     }
 
 }
